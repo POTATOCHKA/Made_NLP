@@ -17,7 +17,7 @@ class DataPreparation:
         self.dataset = None
 
     def _download_data(self):
-        self.path_to_data = self.path_to_data if self.path_to_data is not None else '.data/data.txt'
+        self.path_to_data = self.path_to_data if self.path_to_data is not None else './data.txt'
         if not os.path.exists(self.path_to_data):
             print("Dataset not found locally. Downloading from github.")
             url = 'https://raw.githubusercontent.com/neychev/made_nlp_course/master/datasets/Machine_translation_EN_RU/data.txt'
