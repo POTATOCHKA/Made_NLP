@@ -4,6 +4,7 @@ import torch.nn.functional as F
 import random
 import tqdm
 from nltk.translate.bleu_score import corpus_bleu
+from utils import get_text
 
 
 
@@ -129,7 +130,7 @@ def evaluate(model, iterator, criterion, dataclass):
         for i, batch in enumerate(tqdm.tqdm_notebook((iterator))):
             src = batch.src
             trg = batch.trg
-            output = model(src, trg, 0)  # turn off teacher forcing
+            output = model(src, trg, 0)
 
             output_for_bleu = output.argmax(dim=-1)
             original_text.extend([get_text(x, dataclass.TRG.vocab) for x in trg.cpu().numpy().T])
